@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/../auth.php';require_admin();if($_SERVER['REQUEST_METHOD']!=='POST'){http_response_code(405);exit('Method not allowed');}$id=(int)($_POST['id']??0);if($id){$s=$conn->prepare('DELETE FROM books WHERE id=?');$s->bind_param('i',$id);$s->execute();}header('Location: books.php');exit;?>
